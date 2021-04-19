@@ -1,15 +1,7 @@
 import request from 'superagent'
 
-const serverURL = 'http://localhost:3000/api/v1'
-
-export function getGreeting() {
-  return request
-  .get(`${serverURL}/greeting`)
-  .then(res => res.body)
-}
-
-export function nbaChamps() {
+export function getPlayers() {
   return request 
-  .get('https://fly.sportsdata.io/api/nba/fantasy/json/CurrentSeason')
+  .get('https://balldontlie.io/api/v1/players')
   .then(res => res.body)
 }

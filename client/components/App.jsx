@@ -1,13 +1,25 @@
 import React, {useState, useEffect} from 'react'
-import {getGreeting} from '../apiClient'
+import { getPlayers } from '../apiClient'
 
-const App = () => {
+function allStars() {
+  const[nbaInfo, getNbaInfo] = useState('')
+
+  useEffect(() => {
+   getPlayers() 
+    .then(set => {
+      console.log(set)
+      getNbaInfo(set)
+    })
+    .catch(e =>console.log(e))
+  }, [])
+  
+
   return (
-    <Router>
-      <Route exact path={'/nbaStats'} component={NbaStats}/>
-      <Route exact path={'/'} component={Menu} />
-    </Router>
+      <div>
+        <h1>Choose your All-Stars!</h1>
+        <h1>{nbaInfo}</h1>
+      </div>
   )
 }
 
-export default App
+export default allStars
