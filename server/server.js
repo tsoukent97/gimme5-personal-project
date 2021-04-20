@@ -19,4 +19,9 @@ server.get('/', (req, res) => {
     .then(response => {
       res.json(response.body)
     })
+    .catch(err => {
+      console.log(err)
+    })
 })
+
+
