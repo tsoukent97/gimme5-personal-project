@@ -1,25 +1,19 @@
 import React, {useState, useEffect} from 'react'
-import { getPlayers } from '../apiClient'
+import MyPlayers from '../components/Players'
 
-function allStars() {
-  const[nbaInfo, getNbaInfo] = useState('')
-
-  useEffect(() => {
-   getPlayers() 
-    .then(set => {
-      console.log(set)
-      getNbaInfo(set)
-    })
-    .catch(e =>console.log(e))
-  }, [])
-  
+function App() {
 
   return (
+    <>
       <div>
-        <h1>Choose your All-Stars!</h1>
-        <h1>{nbaInfo}</h1>
+        <h1>Be the best GM!</h1>
       </div>
+      <div>
+        <MyPlayers />
+      </div>
+    </>
   )
 }
 
-export default allStars
+
+export default App
