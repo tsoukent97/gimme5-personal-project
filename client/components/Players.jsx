@@ -17,6 +17,10 @@ function myPlayers () {
         "city":""
     }
 })
+    function handleChange(evt) {
+        evt.preventDefault()
+        getNbaInfo(evt.target.value)
+    }
 
     function handleSubmit(evt) {
         evt.preventDefault()
@@ -26,22 +30,23 @@ function myPlayers () {
           })
           return null
     
-      }
-      useEffect(() => {
-       getPlayers()
-        .then(set => {
-          console.log(set)
-          getNbaInfo(set)
-          return null
-        })
-        .catch(e =>console.log(e))
-      }, [])
+    }
+    
+    useEffect(() => {
+        getPlayers()
+            .then(set => {
+            console.log(set)
+            getNbaInfo(set)
+            return null
+            })
+            .catch(e =>console.log(e))
+        }, [])
 
     return (
         <>
         <div>
             <form onSubmit={handleSubmit}>
-                <input name='name' placeholder="enter name" />
+                <input name='name' placeholder="player name" onChange={handleChange} />
                 <select>
                     <option value='player'>Player1</option>
                     <option value='player'>Player2</option>
@@ -49,6 +54,7 @@ function myPlayers () {
                     <option value='player'>Player4</option>
                     <option value='player'>Player5</option>
                 </select>
+                <button onClick={handleSubmit}>Submit</button>
             </form>
         </div>
         <br></br>
