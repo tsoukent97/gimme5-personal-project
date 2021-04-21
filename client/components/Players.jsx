@@ -20,17 +20,14 @@ function myPlayers () {
 
     function handleSubmit(evt) {
         evt.preventDefault()
-        getPlayer(form)
+        getPlayer(nbaInfo)
           .then(() => {
-            getForm('')
-            return null
+            getNbaInfo
           })
-          .catch(err => {
-            res.status(500).send(err.message)
-          })
+          return null;
     }
     
-    function handleChange (event) {
+    const handleChange = event => {
         getForm({...form, [event.target.first_name]: event.target.value})
     }
 
@@ -47,6 +44,7 @@ function myPlayers () {
 
     return (
         <>
+        <div>
         <select>
             <option value=''>Search Player</option>
             <option value='player1'>Ike Anigbogu</option>
@@ -75,43 +73,44 @@ function myPlayers () {
             <option value='player24'>John Morton</option>
             <option value='player25'>Howard Wright</option>
         </select>
+        </div>
         <div>
-            <table>
+            <table className='content-table'> 
                 <tbody>
                     <tr>
-                        <td>First Name:</td>
+                        <th>First Name</th>
                         <td>{nbaInfo.data[0]['first_name']}</td>
                     </tr>
                     <tr>
-                        <td>Last Name:</td>
+                        <th>Last Name</th>
                         <td>{nbaInfo.data[0]['last_name']}</td>
                     </tr>
                     <tr>
-                        <td>Position:</td>
+                        <th>Position</th>
                         <td>{nbaInfo.data[0]['position']}</td>
                     </tr>
                     <tr>
-                        <td>Team Name:</td>
+                        <th>Team Name</th>
                         <td>{nbaInfo.data[0].team.full_name}</td>
                     </tr>
                     <tr>
-                        <td>City:</td>
+                        <th>City</th>
                         <td>{nbaInfo.data[0].team.city}</td>
                     </tr>
                     <tr>
-                        <td>Conference:</td>
+                        <th>Conference</th>
                         <td>{nbaInfo.data[0].team.conference}</td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <br></br>
-        <div>
+        <div className='font-style'>
             <p>Make your starting five</p>
         </div>
         <div>
-            <form onSubmit={handleSubmit}>
-                <input value={nbaInfo.data[0]['first_name']}name='name' placeholder="Choose Players" onChange={handleChange} />
+            <form onSubmit={handleSubmit} className='font-style'>
+                <input name='name' placeholder="Choose Players" onChange={handleChange} />
                 <button type='submit' onClick={handleSubmit}>Add</button>
             </form>
         </div>

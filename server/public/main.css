@@ -1,0 +1,35 @@
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 200px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.content-table tbody tr td {
+    text-align: left;
+    padding: 12px 15px;
+    font-size: large;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid white;
+    border: 1px solid black;
+}
+
+.content-table tbody tr th {
+    background-color: lightslategray;
+    text-align: left;
+    font-weight: bold;
+    font-size: large;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: lightgrey;
+}
+
+.font-style {
+    font-family: 'RocknRoll One', sans-serif;
+}   

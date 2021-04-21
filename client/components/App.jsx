@@ -5,11 +5,11 @@ function App() {
 
   return (
     <>
-      <div>
-        <h1>Be the best GM!</h1>
+      <div className='font-style'>
+        <h1>G(//I)M-ME-5</h1>
       </div>
-      <div>
-        <p>Research your players!</p>
+      <div className='font-style'>
+        <p>Research your players</p>
         <MyPlayers />
       </div>
     </>
