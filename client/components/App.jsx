@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import MyPlayers from '../components/Players'
 
 function App() {
@@ -9,6 +9,7 @@ function App() {
         <h1>Be the best GM!</h1>
       </div>
       <div>
+        <p>Research your players!</p>
         <MyPlayers />
       </div>
     </>
