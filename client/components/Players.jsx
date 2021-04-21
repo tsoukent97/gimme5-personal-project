@@ -3,7 +3,6 @@ import {getPlayer, addPlayers, deletePlayers} from '../apiClient'
 
 
 function myPlayers () {
-    const[form, getForm] = useState ('')
     const[nbaInfo, getNbaInfo] = useState({
             "data":[
             {
@@ -17,7 +16,8 @@ function myPlayers () {
                 }
             }]
         })
-
+    const [widgets, useWidgets] = useState([])
+    
     function handleSubmit(evt) {
         evt.preventDefault()
         getPlayer(nbaInfo)
