@@ -1,14 +1,15 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import MyPlayers from '../components/Players'
 
 function App() {
 
   return (
     <>
-      <div>
-        <h1>Be the best GM!</h1>
+      <div className='font-style'>
+        <h1>G(//I)M-ME-5</h1>
       </div>
-      <div>
+      <div className='font-style'>
+        <p>Research your players</p>
         <MyPlayers />
       </div>
     </>
