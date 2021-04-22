@@ -5,7 +5,7 @@ import {getPlayer, addPlayers, deletePlayers} from '../apiClient'
 function myPlayers () {
     const[nbaInfo, getNbaInfo] = useState({
             "data":[
-            {
+            {   
                 "first_name":"",
                 "last_name":"",
                 "position":"",
@@ -16,8 +16,30 @@ function myPlayers () {
                 }
             }]
         })
-    const [widgets, useWidgets] = useState([])
+
+    const [chosenPlayer, setChosenPlayer] = useState(
+        {   
+            "first_name":"Kent",
+            "last_name":"Tsou",
+            "position":"G",
+            "team":{
+              "city":"Auckland",
+              "conference":"East",
+              "full_name":"East WildCats",
+            }
+        }
+    )
+
+    const [selectedPlayer, setSelectedPlayer] = useState(0)
+
+    function playerChange(evt) {
+        setSelectedPlayer(evt.target.value)
+        setChosenPlayer(nbaInfo.data.find((player) => {
+            return Number(player.id) === Number(evt.target.value)
+    }))
+}
     
+
     function handleSubmit(evt) {
         evt.preventDefault()
         getPlayer(nbaInfo)
@@ -28,7 +50,7 @@ function myPlayers () {
     }
     
     const handleChange = event => {
-        getForm({...form, [event.target.first_name]: event.target.value})
+        getForm({...form, [event.target.name]: event.target.value})
     }
 
     useEffect(() => {
@@ -45,33 +67,33 @@ function myPlayers () {
     return (
         <>
         <div>
-        <select>
+        <select onChange={playerChange}>
             <option value=''>Search Player</option>
-            <option value='player1'>Ike Anigbogu</option>
-            <option value='player2'>Ron Baker</option>
-            <option value='player3'>Jabari Bird</option>
-            <option value='player4'>MarShon Brooks</option>
-            <option value='player5'>Lorenzo Brown</option>
-            <option value='player6'>Omri Casspi</option>
-            <option value='player7'>Alex Abrines</option>
-            <option value='player8'>Tyler Davis</option>
-            <option value='player9'>Keenan Evans</option>
-            <option value='player10'>Marcin Gortat</option>
-            <option value='player11'>Andrew Bogut</option>
-            <option value='player12'>Amir Johnson</option>
-            <option value='player13'>George King</option>
-            <option value='player14'>Zach Lofton</option>
-            <option value='player15'>Kosta Koufos</option>
-            <option value='player16'>Billy Preston</option>
-            <option value='player17'>Zhou Qi</option>
-            <option value='player18'>Zach Randolph</option>
-            <option value='player19'>Malachi Richardson</option>
-            <option value='player20'>DJ Stephens</option>
-            <option value='player21'>Milos Teodosic</option>
-            <option value='player22'>Gary Trent Jr.</option>
-            <option value='player23'>Michael Smith</option>
-            <option value='player24'>John Morton</option>
-            <option value='player25'>Howard Wright</option>
+            <option value='14'>Ike Anigbogu</option>
+            <option value='25'>Ron Baker</option>
+            <option value='47'>Jabari Bird</option>
+            <option value='67'>MarShon Brooks</option>
+            <option value='71'>Lorenzo Brown</option>
+            <option value='90'>Omri Casspi</option>
+            <option value='1'>Alex Abrines</option>
+            <option value='119'>Tyler Davis</option>
+            <option value='149'>Keenan Evans</option>
+            <option value='179'>Marcin Gortat</option>
+            <option value='1593'>Andrew Bogut</option>
+            <option value='241'>Amir Johnson</option>
+            <option value='256'>George King</option>
+            <option value='281'>Zach Lofton</option>
+            <option value='263'>Kosta Koufos</option>
+            <option value='382'>Billy Preston</option>
+            <option value='384'>Zhou Qi</option>
+            <option value='388'>Zach Randolph</option>
+            <option value='392'>Malachi Richardson</option>
+            <option value='430'>DJ Stephens</option>
+            <option value='437'>Milos Teodosic</option>
+            <option value='448'>Gary Trent Jr.</option>
+            <option value='494'>Michael Smith</option>
+            <option value='495'>John Morton</option>
+            <option value='496'>Howard Wright</option>
         </select>
         </div>
         <div>
@@ -79,27 +101,27 @@ function myPlayers () {
                 <tbody>
                     <tr>
                         <th>First Name</th>
-                        <td>{nbaInfo.data[0]['first_name']}</td>
+                        <td>{chosenPlayer.first_name}</td>
                     </tr>
                     <tr>
                         <th>Last Name</th>
-                        <td>{nbaInfo.data[0]['last_name']}</td>
+                        <td>{chosenPlayer.last_name}</td>
                     </tr>
                     <tr>
                         <th>Position</th>
-                        <td>{nbaInfo.data[0]['position']}</td>
+                        <td>{chosenPlayer.position}</td>
                     </tr>
                     <tr>
                         <th>Team Name</th>
-                        <td>{nbaInfo.data[0].team.full_name}</td>
+                        <td>{chosenPlayer.team.full_name}</td>
                     </tr>
                     <tr>
                         <th>City</th>
-                        <td>{nbaInfo.data[0].team.city}</td>
+                        <td>{chosenPlayer.team.city}</td>
                     </tr>
                     <tr>
                         <th>Conference</th>
-                        <td>{nbaInfo.data[0].team.conference}</td>
+                        <td>{chosenPlayer.team.conference}</td>
                     </tr>
                 </tbody>
             </table>
