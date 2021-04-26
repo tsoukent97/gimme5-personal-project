@@ -19,7 +19,7 @@ function myPlayers () {
 
     const [chosenPlayer, setChosenPlayer] = useState(
         {   
-            "first_name":"Kent",
+            "first_name":"Kenty-Wenty",
             "last_name":"Tsou",
             "position":"G",
             "team":{
